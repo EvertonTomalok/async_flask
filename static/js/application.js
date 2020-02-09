@@ -24,10 +24,12 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-    setInterval(health,15000);
+    setInterval(health,5000, 1);
     var socket = io.connect('http://' + document.domain + ':' + location.port + '/monitor');
+    health(1);
+    health(2);
 
-    function health(){
-        socket.emit("health", 1)
+    function health(_id){
+        socket.emit("health", _id)
     }
 });

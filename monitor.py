@@ -2,11 +2,15 @@ from flask_socketio import SocketIO
 from datetime import datetime
 
 
-class Element:
+class ElementConnected:
     def __init__(self, _id):
         self._id = _id
         self._channel = f"channel{self._id}"
         self._date = datetime.now()
+
+    @property
+    def get_id(self):
+        return self._id
 
     @property
     def channel(self) -> str:
