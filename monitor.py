@@ -5,7 +5,7 @@ from datetime import datetime
 class ElementConnected:
     def __init__(self, _id):
         self._id = _id
-        self._channel = f"channel{self._id}"
+        self._channel = f"/channel{self._id}"
         self._date = datetime.now()
 
     @property
@@ -25,4 +25,4 @@ class ElementConnected:
         self._date = new_date
 
     def emit_message(self, socket: SocketIO, data):
-        socket.emit('monitor', {"data": data}, namespace=self._channel)
+        socket.emit('monitor', data, namespace=self._channel)

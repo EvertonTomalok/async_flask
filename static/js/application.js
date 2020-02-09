@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
     //connect to the socket server.
-    var socket = io.connect('http://' + document.domain + ':' + location.port + '/monitor');
+    var socket = io.connect('http://' + document.domain + ':' + location.port + '/channel1');
     var numbers_received = [];
 
     socket.emit('cadastro', 1);

@@ -55,13 +55,16 @@ class RandomThread(Thread):
         #infinite loop of magical random numbers
         clients = ["Everton", "Amanda", "Ivone"]
         while connected > 0:
-            for client in clients:
-                sleep(self.delay)
-                socketio.emit('monitor', {'paciente': client}, namespace='/monitor')
+            for element in elements_connected:
+                for client in clients:
+                    sleep(self.delay)
+                    # socketio.emit('monitor', {'paciente': client}, namespace='/monitor')
+                    element.emit_message(socketio, {'paciente': client})
         return
 
     def run(self):
         self.randomNumberGenerator()
+
 
 def check_activity():
     global elements_connected
